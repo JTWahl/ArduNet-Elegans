@@ -9,6 +9,7 @@
 
 #include "neuralROM.h"            //import libraries
 #include "sprites.h"
+#include "bit_array.h"
 #include <Arduboy2.h>
 #include <stdlib.h>
 
@@ -40,8 +41,8 @@ uint8_t counter = 0;
 
 uint16_t preSynapticNeuronList[maxSynapse];  //interface array to hold all the different presynaptic neurons
 //int8_t learningArray[302];          //an array that, for each neuron, holds its firing history
-bool outputList[302];     //list of neurons
-bool nextOutputList[302]; //buffer to solve conflicting time differentials in firing
+BitArray<302> outputList;     //list of neurons
+BitArray<302> nextOutputList; //buffer to solve conflicting time differentials in firing
 
 struct Neuron {
   int16_t cellID;
